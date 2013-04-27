@@ -1,4 +1,12 @@
 extends layout
 
 block body
-  
+
+  div(ng-view)
+
+block bodyScripts
+  script(src="/js/app.js")
+  script(src="/js/controllers.js")
+  script(src="/js/services.js")
+
+

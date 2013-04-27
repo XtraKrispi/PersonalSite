@@ -1,0 +1,24 @@
+body {
+  padding-top: 60px;
+}
+
+#footer .container {
+  padding-top: 10px;
+}
+
+
+#footer.navbar .divider-vertical {
+  height: 32px;
+}
+
+.social-button a:hover img {
+  background-color: #ddd;
+}
+
+.social-button img {
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+
+

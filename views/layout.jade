@@ -3,7 +3,43 @@ html
   head
     meta(charset='utf8')
     base(href='/')
-    title Angular Express Seed App
+    title Michael Gold - Software Developer
+    link(rel='stylesheet', href='/lib/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/css/app.css')
-  body
-    block body
+
+    script(src="/lib/jquery/jquery-1.9.1.js")
+    script(src="/lib/bootstrap/js/bootstrap.js")
+    script(src="/lib/angular/angular.js")
+  body(ng-app="MGApp")
+    .navbar.navbar-fixed-top.navbar-inverse(ng-controller="NavCtrl")
+      .navbar-inner
+        .container
+          ul.nav
+            li(ng-repeat="navItem in navItems", ng-class="{active: isActive(navItem.page)}")
+              a(href="{{navItem.url}}", ng-class="{brand: navItem.brand}") {{navItem.title}}
+
+    .container
+      aside.pull-right.well
+        h2 Latest Tweets
+        hr
+        div(ng-controller="TweetsCtrl")
+
+      block body
+
+
+    #footer.navbar.navbar-fixed-bottom
+      .navbar-inner
+        .container
+          ul.nav
+            li 
+              a(href="/") &copy;2013 Michael Gold
+            li.divider-vertical
+            li
+              a(href="http://www.twitter.com/XtraKrispi", target="_blank")
+                img(src="https://twitter.com/images/resources/twitter-bird-light-bgs.png", width="25", height="25")
+            li
+              a(href="http://ca.linkedin.com/pub/michael-gold/26/166/65b", target="_blank")
+                img(src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png", width="20", height="15", alt="View Michael Gold's LinkedIn profile")
+
+    block bodyScripts
+
