@@ -1,4 +1,4 @@
-angular.module('MGApp', [])
+angular.module('MGApp', ['ngResource'])
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     $routeProvider
       .when('/', { templateUrl: '/partials/home' })

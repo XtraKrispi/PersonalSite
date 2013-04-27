@@ -10,6 +10,7 @@ html
     script(src="/lib/jquery/jquery-1.9.1.js")
     script(src="/lib/bootstrap/js/bootstrap.js")
     script(src="/lib/angular/angular.js")
+    script(src="/lib/angular/angular-resource.js")
   body(ng-app="MGApp")
     .navbar.navbar-fixed-top.navbar-inverse(ng-controller="NavCtrl")
       .navbar-inner
@@ -23,6 +24,8 @@ html
         h2 Latest Tweets
         hr
         div(ng-controller="TweetsCtrl")
+          div(ng-repeat="tweet in tweets") {{$index}} - {{ tweet.text}}
+
 
       block body
 
