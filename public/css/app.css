@@ -35,11 +35,19 @@ div.tweet {
   padding-top: 10px;
   padding-bottom: 10px;
   line-height: 22px;
+  background-color: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 aside.tweet-container header {
   border-bottom: 1px solid #eee;
   margin-bottom: 10px;
+}
+
+aside.tweet-container header h2 {
+  margin-bottom: 0px;
+  margin-top: 0px;
 }
 
 img.twitter-photo {
@@ -54,4 +62,32 @@ div.tweets a {
 
 div.tweet a:hover {
   text-decoration: underline;
+}
+
+.post-count {
+  margin-left:10px;
+}
+
+.blogs header {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 20px;
+}
+
+.blog {
+  margin-bottom: 40px;
+}
+
+.blog header {
+  border-bottom: 1px solid #eee;
+}
+
+.blog header .small {
+  font-size: 18px;
+}
+
+.blog footer {
+  font-size: 12px;
+  background-color: #ddd;
+  padding: 5px;
+  font-style: italic;
 }

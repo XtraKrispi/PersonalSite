@@ -7,7 +7,6 @@ angular.module('MGApp')
 
         $http.get(url)
         .success(function(data){
-          $log.info(data);
           deferred.resolve(data);
         }).error(function(data){
           deferred.reject(data);
@@ -22,4 +21,19 @@ angular.module('MGApp')
     return {
         ie: a.match(/MSIE\s([^;]*)/)
     }
+  }])
+  .factory('BlogService', ['$http', '$q', function($http, $q){
+    return {
+      getBlogs: function(){
+        var deferred = $q.defer();
+
+        $http.get('/api/blogs').success(function(data){
+          deferred.resolve(data);
+        }).error(function(data){
+          deferred.reject(data);
+        });
+
+        return deferred.promise;
+      }
+    };
   }]);

@@ -1,1 +1,14 @@
-|Home
+.blogs(ng-controller="BlogCtrl")
+  header
+    h2 My Blog Posts
+      span.post-count(ng-pluralize, count="blogs.length", when="{'0': '(No posts)', '1': '(1 post)', 'other': '({} posts)'}")
+  .loading(ng-hide="blogs")
+    h3 Loading...      
+  article.blog(ng-repeat="blog in blogs")
+    header
+      h3 
+        span {{blog.title}}
+        span.pull-right.small {{blog.date | date:"MMMM d, yyyy h:mm a"}}
+    p {{blog.content}}
+    footer
+      span(ng-pluralize, count="blog.comments.length || 0", when="{'0': 'No comments', '1': '1 comment', 'other': '{} comments'}")

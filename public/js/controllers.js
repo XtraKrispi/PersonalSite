@@ -11,4 +11,7 @@ angular.module('MGApp')
   }])
   .controller('TweetsCtrl', ['$scope', 'TwitterService', function($scope, TwitterService){
     $scope.tweets = TwitterService.getTweets();
+  }])
+  .controller('BlogCtrl', ['$scope', 'BlogService', function($scope, BlogService){
+    $scope.blogs = BlogService.getBlogs();
   }]);

@@ -37,6 +37,7 @@ app.get('/partials/:name', routes.partials);
 
 app.get('/api/name', api.name);
 app.get('/api/tweets', api.tweets);
+app.get('/api/blogs', api.blogs);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

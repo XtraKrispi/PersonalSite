@@ -22,3 +22,12 @@ exports.tweets = function(req, res){
     res.json(data);
   });
 };
+
+exports.blogs = function(req, res){
+  var blogs = [
+    {title: "Blog 1", content: "This is the content", date: '2013-04-28', comments: []},
+    {title: "Blog 2", content: "This is the content", date: '2013-04-28', comments: []}
+  ];
+
+  res.json(blogs);
+};
