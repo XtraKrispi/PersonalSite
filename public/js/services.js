@@ -1,5 +1,5 @@
 angular.module('MGApp')
-  .factory('TwitterService', ['$http', '$q', function($http, $q) {
+  .factory('TwitterService', ['$http', '$q', '$log', function($http, $q, $log) {
         var url = '/api/tweets';
     return {
       getTweets: function(){
@@ -7,6 +7,7 @@ angular.module('MGApp')
 
         $http.get(url)
         .success(function(data){
+          $log.info(data);
           deferred.resolve(data);
         }).error(function(data){
           deferred.reject(data);
@@ -15,4 +16,10 @@ angular.module('MGApp')
         return deferred.promise;
     }
   }
+  }])
+  .factory('K', [function(){
+    var a = navigator.userAgent;
+    return {
+        ie: a.match(/MSIE\s([^;]*)/)
+    }
   }]);

@@ -20,14 +20,24 @@ html
               a(href="{{navItem.url}}", ng-class="{brand: navItem.brand}") {{navItem.title}}
 
     .container
-      aside.pull-right.well
-        h2 Latest Tweets
-        hr
-        div(ng-controller="TweetsCtrl")
-          div(ng-repeat="tweet in tweets") {{$index}} - {{ tweet.text}}
+      .row
+        .span8
+          block body
+
+        aside.span4.well.tweet-container
+          header 
+            h2 Latest Tweets
+          .tweets(ng-controller="TweetsCtrl")
+            .tweet(ng-repeat="tweet in tweets") 
+              a(href="https://twitter.com/{{tweet.user.screen_name}}", target="_blank")
+                .user 
+                  img.twitter-photo(ng-src="{{tweet.user.profile_image_url}}")
+                  span @{{ tweet.user.screen_name }}
+                  span.pull-right {{ tweet.created_at | twitterDate:'MMM d yy h:mm a'}}
+              a(href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}", target="_blank")
+                .text {{ tweet.text }}
 
 
-      block body
 
 
     #footer.navbar.navbar-fixed-bottom

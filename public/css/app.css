@@ -21,4 +21,37 @@ body {
 }
 
 
+div.tweets {
+  overflow: auto;
+  height: 500px;
+}
 
+.well {
+    box-sizing: border-box;
+}
+
+div.tweet {
+  border-bottom: 1px solid #eee;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  line-height: 22px;
+}
+
+aside.tweet-container header {
+  border-bottom: 1px solid #eee;
+  margin-bottom: 10px;
+}
+
+img.twitter-photo {
+  height: 20px;
+  margin-right: 10px;
+}
+
+div.tweets a {
+  text-decoration: none;
+  color: inherit;
+}
+
+div.tweet a:hover {
+  text-decoration: underline;
+}
