@@ -13,8 +13,8 @@ angular.module('MGApp')
         });
 
         return deferred.promise;
+      }
     }
-  }
   }])
   .factory('K', [function(){
     var a = navigator.userAgent;

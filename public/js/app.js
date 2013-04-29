@@ -1,4 +1,4 @@
-angular.module('MGApp', ['ngResource'])
+angular.module('MGApp', ['ngResource', 'ngSanitize'])
   .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider){
     $routeProvider
       .when('/', { templateUrl: '/partials/home' })
