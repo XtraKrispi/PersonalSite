@@ -9,6 +9,6 @@
       h3 
         span {{blog.title}}
         span.pull-right.small {{blog.date | date:"MMMM d, yyyy h:mm a"}}
-    p {{blog.content}}
+    p(ng-bind-html="blog.content")
     footer
       span(ng-pluralize, count="blog.comments.length || 0", when="{'0': 'No comments', '1': '1 comment', 'other': '{} comments'}")

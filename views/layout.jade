@@ -6,6 +6,7 @@ html
     title Michael Gold - Software Developer
     link(rel='stylesheet', href='/lib/bootstrap/css/bootstrap.css')
     link(rel='stylesheet', href='/css/app.css')
+    link(rel='stylesheet', href='/lib/bootstrap/css/bootstrap-responsive.css')
 
     script(src="/lib/jquery/jquery-1.9.1.js")
     script(src="/lib/bootstrap/js/bootstrap.js")
@@ -41,7 +42,7 @@ html
                   span @{{ tweet.user.screen_name }}
                   span.pull-right {{ tweet.created_at | twitterDate:'MMM d, yy h:mm a'}}
               a(href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}", target="_blank")
-                .text(ng-bind-html-unsafe="tweet.text | tweet: tweet")
+                .text(ng-bind-html="tweet.text | tweet: tweet")
 
 
 
