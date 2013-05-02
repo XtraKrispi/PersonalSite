@@ -1,5 +1,5 @@
 angular.module('MGApp')
-  .controller('NavCtrl', ['$scope', '$location', function($scope, $location){
+  .controller('NavCtrl', ['$scope', '$location', '$window', function($scope, $location, $window){
     $scope.navItems = [
       { title: 'Michael Gold', brand: true, url: '/', page: 'home' },
       { title: 'About', url: '/about', page: 'about'}
@@ -14,4 +14,27 @@ angular.module('MGApp')
   }])
   .controller('BlogCtrl', ['$scope', 'BlogService', function($scope, BlogService){
     $scope.blogs = BlogService.getBlogs();
+  }])
+  .controller('AdminPageCtrl', ['$scope', '$rootScope', function($scope, $rootScope){
+  }])
+  .controller('BlogAdminCtrl', ['$scope', 'BlogService', function($scope, BlogService){
+    $scope.blogs = BlogService.getBlogs();
+
+    $scope.editBlog = function(blog){
+      blog.isEditing = true;
+      blog.edit = angular.copy(blog);
+    };
+
+    $scope.cancelEditing = function(blog){
+      delete blog.edit;
+      blog.isEditing = false;
+    };
+
+    $scope.saveBlog = function(blog){
+      blog.title = blog.edit.title;
+      blog.content = blog.edit.content;
+      delete blog.edit;
+      blog.isEditing = false;
+      BlogService.insertBlog(blog);
+    };
   }]);

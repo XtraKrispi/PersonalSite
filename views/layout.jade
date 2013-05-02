@@ -13,6 +13,7 @@ html
     script(src="/lib/angular/angular.js")
     script(src="/lib/angular/angular-resource.js")
     script(src="/lib/angular/angular-sanitize.js")
+    script(src="/lib/markdown/showdown.js")
   body(ng-app="MGApp")
     .navbar.navbar-fixed-top.navbar-inverse(ng-controller="NavCtrl")
       .navbar-inner
@@ -21,31 +22,30 @@ html
             li(ng-repeat="navItem in navItems", ng-class="{active: isActive(navItem.page)}")
               a(href="{{navItem.url}}", ng-class="{brand: navItem.brand}") {{navItem.title}}
           ul.nav.pull-right
-            li
+            li(ng-class="{active: isActive('admin')}")
               a(href="/admin") Admin
+            li(ng-show="loggedIn")
+              a(href="/signout") Sign Out
 
     .container
       .row
         .span8
           block body
 
-        aside.span4.well.tweet-container
+        aside.span4.well.tweet-container(ng-hide="layout == 'private'")
           header 
             h2 Latest Tweets
-          .tweets(ng-controller="TweetsCtrl")
-            .loading(ng-hide="tweets")
-              h3 Loading...
-            .tweet(ng-repeat="tweet in tweets") 
-              a(href="https://twitter.com/{{tweet.user.screen_name}}", target="_blank")
-                .user 
-                  img.twitter-photo(ng-src="{{tweet.user.profile_image_url}}")
-                  span @{{ tweet.user.screen_name }}
-                  span.pull-right {{ tweet.created_at | twitterDate:'MMM d, yy h:mm a'}}
-              a(href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}", target="_blank")
-                .text(ng-bind-html="tweet.text | tweet: tweet")
-
-
-
+            .tweets(ng-controller="TweetsCtrl")
+              .loading(ng-hide="tweets")
+                h3 Loading...
+              .tweet(ng-repeat="tweet in tweets") 
+                a(href="https://twitter.com/{{tweet.user.screen_name}}", target="_blank")
+                  .user 
+                    img.twitter-photo(ng-src="{{tweet.user.profile_image_url}}")
+                    span @{{ tweet.user.screen_name }}
+                    span.pull-right {{ tweet.created_at | twitterDate:'MMM d, yy h:mm a'}}
+                a(href="https://twitter.com/{{tweet.user.screen_name}}/status/{{tweet.id_str}}", target="_blank")
+                  .text(ng-bind-html="tweet.text | tweet: tweet")
 
     #footer.navbar.navbar-fixed-bottom
       .navbar-inner
@@ -61,5 +61,8 @@ html
               a(href="http://ca.linkedin.com/pub/michael-gold/26/166/65b", target="_blank")
                 img(src="http://www.linkedin.com/img/webpromo/btn_in_20x15.png", width="20", height="15", alt="View Michael Gold's LinkedIn profile")
 
+    #login(ng-show="loginRequired")
+      |This is the login window
     block bodyScripts
+
 

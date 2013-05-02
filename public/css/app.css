@@ -90,3 +90,7 @@ div.tweet a:hover {
   padding: 5px;
   font-style: italic;
 }
+
+.edit textarea {
+  width: 500px;
+}

@@ -2,7 +2,7 @@ extends layout
 
 block body
 
-  div(ng-view)
+  div(ng-view, ng-hide="loginRequired")
 
 block bodyScripts
   script(src="/js/app.js")

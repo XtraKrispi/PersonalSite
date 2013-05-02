@@ -11,6 +11,23 @@ var twit = new twitter({
   access_token_secret: 'tDBTk5tkzdoiJMJOKsGUkGEHoJhXnqrPaAArGjkLAg'
 });
 
+var tweets;
+
+var getTweets = function(){
+  console.log('Getting tweets');
+  twit.getUserTimeline({screen_name: 'XtraKrispi', count: 20}, function(err, data){
+    tweets = data;
+    setTimeout(function(){getTweets();}, 300000);
+  });
+};
+
+var blogs = [
+  {id: 1, title: "Blog 1", content: "This is the content", date: '2013-04-28', comments: []},
+  {id: 2, title: "Blog 2", content: "This is the content", date: '2013-04-28', comments: []}
+];
+
+//getTweets();
+
 exports.name = function (req, res) {
   res.json({
   	name: 'Bob'
@@ -19,15 +36,16 @@ exports.name = function (req, res) {
 
 exports.tweets = function(req, res){
   twit.getUserTimeline({screen_name: 'XtraKrispi', count: 20}, function(err, data){
-    res.json(data);
+    tweets = data;
+    res.json(tweets);
   });
+  //res.json(tweets);
 };
 
 exports.blogs = function(req, res){
-  var blogs = [
-    {title: "Blog 1", content: "This is the content", date: '2013-04-28', comments: []},
-    {title: "Blog 2", content: "This is the content", date: '2013-04-28', comments: []}
-  ];
-
   res.json(blogs);
+};
+
+exports.insertBlog = function(req, res){
+  console.log(JSON.stringify(req.body));
 };

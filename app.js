@@ -31,6 +31,7 @@ app.configure('production', function(){
 // Routes
 
 app.get('/', routes.index);
+app.get('/admin', routes.admin);
 app.get('/partials/:name', routes.partials);
 
 // JSON API
@@ -38,6 +39,7 @@ app.get('/partials/:name', routes.partials);
 app.get('/api/name', api.name);
 app.get('/api/tweets', api.tweets);
 app.get('/api/blogs', api.blogs);
+app.post('/api/blogs', api.insertBlog);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

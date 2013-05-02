@@ -34,6 +34,28 @@ angular.module('MGApp')
         });
 
         return deferred.promise;
+      },
+      insertBlog: function(blog){
+        var deferred = $q.defer();
+
+        $http.post('/api/blogs', blog).success(function(data){
+          deferred.resolve(data);
+        }).error(function(data){
+          deferred.reject(data);
+        });
+
+        return deferred.promise;
+      },
+      updateBlog: function(blog){
+        var deferred = $q.defer();
+
+        $http.put('/api/blogs/' + blog.id, blog).success(function(data){
+          deferred.resolve(data);
+        }).error(function(data){
+          deferred.reject(data);
+        });
+
+        return deferred.promise;
       }
     };
   }]);

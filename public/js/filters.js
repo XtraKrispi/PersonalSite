@@ -41,4 +41,11 @@ angular.module('MGApp')
   		}
   		return input;
   	}
+  }])
+  .filter('markdown', [function(){
+    return function(input, scope){
+      var converter = new Showdown.converter();
+      var html = converter.makeHtml(input);
+      return html;
+    }
   }]);

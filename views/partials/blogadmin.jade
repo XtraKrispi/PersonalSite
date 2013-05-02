@@ -1,0 +1,25 @@
+extends admin
+
+block content
+  div.container(ng-controller="BlogAdminCtrl")
+    div.row.well(ng-repeat="blog in blogs")
+      div.btn.pull-right(ng-click="editBlog(blog)", ng-hide="blog.isEditing") Edit
+      div(ng-hide="blog.isEditing")
+        h3
+          span {{blog.title}}
+        div
+          div(ng-bind-html="blog.content | markdown")
+
+      div.edit(ng-show="blog.isEditing")
+        div.control-group
+          label.control-label Title
+          div.controls
+            input(type="text",ng-model="blog.edit.title")
+        div.control-group
+          label.control-label Content
+          div.controls
+            textarea(ng-model="blog.edit.content", rows="10")
+        div.control-group
+          div.controls
+            button.btn.btn-primary(ng-click="saveBlog(blog)") Save
+            button.btn(ng-click="cancelEditing(blog)") Cancel
