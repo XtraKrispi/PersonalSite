@@ -48,4 +48,15 @@ exports.blogs = function(req, res){
 
 exports.insertBlog = function(req, res){
   console.log(JSON.stringify(req.body));
+  blogs.push(req.body);
+};
+
+exports.updateBlog = function(req, res){
+  console.log(JSON.stringify(req.body));
+  for (var i = 0; i < blogs.length; i++){
+    var blog = blogs[i];
+    if (blog.id == req.body.id){
+      blogs[i] = req.body;
+    }
+  }
 };

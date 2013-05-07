@@ -40,6 +40,7 @@ app.get('/api/name', api.name);
 app.get('/api/tweets', api.tweets);
 app.get('/api/blogs', api.blogs);
 app.post('/api/blogs', api.insertBlog);
+app.put('/api/blogs/:id', api.updateBlog);
 
 // redirect all others to the index (HTML5 history)
 app.get('*', routes.index);

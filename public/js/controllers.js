@@ -34,7 +34,12 @@ angular.module('MGApp')
       blog.title = blog.edit.title;
       blog.content = blog.edit.content;
       delete blog.edit;
-      blog.isEditing = false;
-      BlogService.insertBlog(blog);
+      delete blog.isEditing;
+      //blog.isEditing = false;
+      if (blog.id){
+        BlogService.updateBlog(blog);
+      } else {
+        BlogService.insertBlog(blog);        
+      }
     };
   }]);
